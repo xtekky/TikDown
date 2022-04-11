@@ -28,5 +28,5 @@
 ```
 
 ##  Credits:
- > [discord.gg/onlp](https://discord.gg/onlp) <br>Tekky#9999 :
+ > Server: [discord.gg/onlp](https://discord.gg/onlp) <br>User: [Tekky#9999](https://mushroom.gg/tekky)
  <br>Telegram : [t.me/xtekky](https://t.me/xtekky)
