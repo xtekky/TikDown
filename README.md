@@ -16,15 +16,12 @@
 ```
 
 ## Installation
-```
-  * pip install pystyle
-  * pip install requests 
-  * pip install urllib
+```js
+  * run the "tikdown.bat" file
 ```
 
 ##  Usage:
-```
-  * python main.py
+```js
   * choose amount
   * paste video url
   * wait till downloads are finished
