@@ -7,7 +7,11 @@
   <b>Star ⭐ if you want more</b><br>
 </p>
 
-
+## New
+```js
+  * Download from TikTok profile (@xxx)
+  * Faster
+```
 ## Features
 ```js
   * Download TikTok videos
