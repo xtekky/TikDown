@@ -26,7 +26,9 @@
 
 ##  Usage:
 ```js
-  * choose amount
+  * choose Username or amount
+  * if username > input @ and wait till downloads are finished
+  * if amount > choose amount
   * paste video url
   * wait till downloads are finished
 ```
