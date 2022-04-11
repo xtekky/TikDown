@@ -1,6 +1,3 @@
-'''
-GET THE FUCK OUT OF HERE BITCH
-'''
 import http.client
 import json
 import random
