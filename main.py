@@ -1,3 +1,5 @@
+from bs4 import BeautifulSoup
+from urllib.request import Request, urlopen
 import http.client
 import json
 import random
@@ -56,12 +58,61 @@ if __name__ == "__main__":
                         █▄──▀▀▀──▄█████    ▒ ░░   ░▓  ▒ ▒▒ ▓▒    ▒▒▓  ▒ ░ ▒░▒░▒░ ░ ▓░▒ ▒ ░ ▒░   ▒ ▒ 
                         ╔══╦╦╦╗╔══╦═╦╦╗      ░     ▒ ░░ ░▒ ▒░    ░ ▒  ▒   ░ ▒ ▒░   ▒ ░ ░ ░ ░░   ░ ▒░
                         ╚╗╔╣║═╣╚╗╔╣║║═╣     ░       ▒ ░░ ░░ ░     ░ ░  ░ ░ ░ ░ ▒    ░   ░    ░   ░ ░ 
-                         ╚╝╚╩╩╝ ╚╝╚═╩╩╝       ░  ░  ░  v.2    ░.gg/onlp░ ░      ░ T E K K Y  ░   
+                         ╚╝╚╩╩╝ ╚╝╚═╩╩╝       ░  ░  ░  v.3    ░.gg/onlp░ ░      ░ T E K K Y  ░   
                         ─═════════════════════════════════════☆☆═════════════════════════════════════─
                                Copyright: ONLP™ x Tekky © 2022 | Discord: .gg/onlp / Tekky#9999                       
                         ─═════════════════════════════════════☆☆═════════════════════════════════════─'''
     print(Colorate.Horizontal(Colors.blue_to_purple, txt, 1))
     print('\n')
+
+    #how many links
+    Write.Print("Do you want to download videos from a profile [y/n] ↓\n", Colors.blue_to_purple, interval=0.001)
+    choice = Write.Input(" >  ", Colors.blue_to_purple, interval=0.5, hide_cursor=True)
+    print('\n')
+
+    if choice == 'y':
+        # how many links
+        Write.Print("[?] Username [@xxxx] ↓\n", Colors.blue_to_purple, interval=0.001)
+        user = Write.Input(" >  ", Colors.blue_to_purple, interval=0.5, hide_cursor=True)
+
+        print('\n')
+
+        headers = {
+            'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
+        }
+        if "@" in user:
+            req = Request(f"https://www.tiktok.com/{user}", headers=headers)
+        else:
+            req = Request(f"https://www.tiktok.com/@{user}", headers=headers)
+        html_page = urlopen(req)
+        soup = BeautifulSoup(html_page, "lxml")
+        links = []
+        for link in soup.findAll('a'):
+            links.append(link.get('href'))
+        x = 0
+
+        for l in links:
+            if len(l) >= 54:
+                if "business" in l:
+                    pass
+                elif "legal" in l:
+                    pass
+                else:
+                    l = l.split("/")[5].split("?", 1)[0]
+                    links_list.append(l)
+                    x += 1
+        Write.Print(f"[*] Videos found: {x}\n", Colors.blue_to_purple, interval=0.001)
+
+        start_time = time()
+
+        for z in range(x):
+            Write.Print(f'[*] Downloading [{z}/{x}]: [ id = {links_list[z]} ]\n', Colors.blue_to_purple, interval=0.001)
+            videoUrl = getVideoUrl(links_list[z])
+            response = request.urlretrieve(videoUrl, f"./tiktok_vids/tiktok_{user}_{random.randint(1000, 9999)}.mp4")
+        Write.Print(f'[*] Status > Success [{x}/{x}] (Check "tiktok_vids" folder) | TTC > {round(time() - start_time, 1)}s\n', Colors.green_to_white, interval=0.001)
+        quit()
+    else:
+        pass
 
     #how many links
     Write.Print("[?] How many links [1 to ∞] ↓\n", Colors.blue_to_purple, interval=0.001)
@@ -96,4 +147,3 @@ if __name__ == "__main__":
         videoUrl = getVideoUrl(links_list[z])
         response = request.urlretrieve(videoUrl, f"./tiktok_vids/tiktok{random.randint(1000, 9999)}.mp4")
     Write.Print(f'[*] Status > Success [{links}/{links}] (Check "tiktok_vids" folder) | TTC > {round(time() - start_time, 1)}s\n',Colors.green_to_white, interval=0.001)
-
