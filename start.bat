@@ -1,8 +1,6 @@
 @echo off
 pip install pystyle
-cls
 pip install requests 
-cls
-pip install urllib
-cls
+pip install urllib3
+pip install lxml
 python main.py
