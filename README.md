@@ -9,8 +9,12 @@
 
 ## New
 ```js
-  * Download from TikTok profile (@xxx)
+  * Download by profile (@xxx)
   * Faster
+```
+## To come
+```js
+  * Download by #
 ```
 ## Features
 ```js
