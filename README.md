@@ -1,7 +1,7 @@
 # 
 
 
-<h1 align="center">💎TD [ TikDown v3 ]</h1>
+<h1 align="center">💎TD [ TikDown v4 ]</h1>
 
 <p align='center'>
   <b>Star ⭐ if you want more</b><br>
@@ -10,6 +10,7 @@
 ## New
 ```js
  * Video limit per profile now 90 !!
+ * 10x faster !!
 ```
 ## To come
 ```js
