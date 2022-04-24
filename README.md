@@ -9,8 +9,7 @@
 
 ## New
 ```js
-  * Download by profile (@xxx)
-  * Faster
+ * Video limit per profile now 90 instead of 16
 ```
 ## To come
 ```js
@@ -19,6 +18,7 @@
 ## Features
 ```js
   * Download TikTok videos
+  * Download by profile (@xxx)
   * Fast
   * NO Watermark
 ```
