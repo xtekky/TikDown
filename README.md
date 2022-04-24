@@ -26,9 +26,7 @@
 ## Requirements
 ```js
   * pip install requests
-  * Download by profile (@xxx)
-  * Fast
-  * NO Watermark
+  * pip install pystyle
 ```
 
 ## Installation
