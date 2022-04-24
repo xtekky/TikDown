@@ -23,6 +23,13 @@
   * Fast
   * NO Watermark
 ```
+## Requirements
+```js
+  * pip install requests
+  * Download by profile (@xxx)
+  * Fast
+  * NO Watermark
+```
 
 ## Installation
 ```js
