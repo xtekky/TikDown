@@ -44,5 +44,6 @@
 ```
 
 ##  Credits:
- > Server: [discord.gg/onlp](https://discord.gg/onlp) <br>User: [Tekky#9999](https://mushroom.gg/tekky)
- <br>Telegram : [t.me/xtekky](https://t.me/xtekky)
+ > [![](https://cdn.discordapp.com/avatars/719864492514738226/a_5de73a96793f9b0b3cbbafc2efc25ec7.gif?size=100)](https://github.com/xtekky) <br>Tekky © 2022 | ONLP™
+
+
