@@ -9,7 +9,7 @@
 
 ## New
 ```js
- * Video limit per profile now 90 !!
+ * Video limit per profile now 93!!
  * 10x faster !!
 ```
 ## To come
