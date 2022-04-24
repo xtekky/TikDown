@@ -163,7 +163,7 @@ def start():
 
 if __name__ == "__main__":
     os.system('title Tekky © 2022 ^| TikDown' if os.name == 'nt' else '')
-    newpath = r'./tiktok_vids'
-    if not os.path.exists(newpath):
-        os.makedirs(newpath)
+
+    if not os.path.exists(r'./tiktok_vids'):
+        os.makedirs(r'./tiktok_vids')
     start()
