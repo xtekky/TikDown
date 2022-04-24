@@ -1,5 +1,5 @@
 @echo off
 pip install pystyle
 pip install requests 
-cls
+cl
 python main.py
