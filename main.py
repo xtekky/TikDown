@@ -139,7 +139,7 @@ if __name__ == "__main__":
             quit()
 
 
-    #Write.Print(f'[*] Downloading: [{raw_link}]\n', Colors.blue_to_purple, interval=0.001)
+    #Write.Print(f'[*] Downloading: [{raw_link}]\n', Colors.blue_to_purple, interval=0.001
     start_time = time()
 
     for z in range(links):
