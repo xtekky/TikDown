@@ -40,7 +40,7 @@
   * Choose Username or amount
   * If username > input @ and wait till downloads are finished
   * If amount > choose amount > paste video url(s) > wait till downloads are finished
-  * Downloads will be in the "tiktok_vids" folder.
+  * Downloads will be in the "tiktok_vids" folder
 ```
 
 ##  Credits:
