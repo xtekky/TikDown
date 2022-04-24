@@ -4,11 +4,6 @@
 # I am not responsible for any damage caused by your use of this software.
 #-------------------------------------------------------------------------------------------------
 
-from imp import acquire_lock
-from msilib.schema import Error
-from re import S
-
-
 try:
     import os
     import requests
