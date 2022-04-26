@@ -4,6 +4,8 @@
 # I am not responsible for any damage caused by your use of this software.
 #-------------------------------------------------------------------------------------------------
 
+#from msilib.schema import Error
+
 try:
     import os
     import requests
@@ -14,15 +16,22 @@ try:
 except ModuleNotFoundError as e:
     print(f'ERROR [{e}]')
 
+base_path = './Desktop/tiktok_vids'
 
-def download(id):
+def download(id, user):
     headers = {
         'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
     }
 
     try:
+        if not os.path.exists(r'{}/{}'.format(base_path, user)):
+            os.makedirs(r'{}/{}'.format(base_path, user))
+    except:
+        print('Creating path...')
+
+    try:
         r = requests.get(f'https://api.tiktokv.com/aweme/v1/multi/aweme/detail/?aweme_ids=%5B{id}%5D', headers=headers).json()["aweme_details"][0]["video"]["play_addr"]["url_list"][0]
-        with open(f'./tiktok_vids/tiktok{random.randint(1000, 9999)}.mp4', 'wb') as out_file:
+        with open(f'{base_path}/{user}/tiktok{random.randint(1000, 9999)}.mp4', 'wb') as out_file:
             content = requests.get(f'{r}.mp4', stream=True).content
             out_file.write(content)
             print(Colorate.Horizontal(Colors.green_to_white,f"       [*] Downloaded [id={id}] [folder=tiktok_vids]\n", 1))
@@ -31,12 +40,12 @@ def download(id):
         sleep(1)
         try:
             r = requests.get(f'https://api.tiktokv.com/aweme/v1/multi/aweme/detail/?aweme_ids=%5B{id}%5D', headers=headers).json()["aweme_details"][0]["video"]["play_addr"]["url_list"][0]
-            with open(f'./tiktok_vids/tiktok{random.randint(1000, 9999)}.mp4', 'wb') as out_file:
+            with open(f'{base_path}/{user}/tiktok{random.randint(1000, 9999)}.mp4', 'wb') as out_file:
                 content = requests.get(f'{r}.mp4', stream=True).content
                 out_file.write(content)
                 print(Colorate.Horizontal(Colors.green_to_white,f"       [*] Downloaded [id={id}] [folder=tiktok_vids]\n", 1))
 
-        except Error as e:
+        except Exception as e:
             print(Colorate.Horizontal(Colors.red_to_white,f"       [x] ERROR: Unable to download [id={id}] [{e}]\n", 1))
             pass
 
@@ -63,7 +72,7 @@ def main(user):
         start()
 
     if r["userInfo"]['stats']['videoCount'] == '0':
-        Write.Print('       [*] This user has no visdeos!!', Colors.red_to_white, interval=0.01)
+        Write.Print('       [*] This user has no videos!!', Colors.red_to_white, interval=0.01)
         input()
         start()
     
@@ -75,7 +84,7 @@ def main(user):
 
     for no in r["body"]['itemListData']:
         id = no["itemInfos"]['id']
-        Thread(target=download, args=(id,)).start()
+        Thread(target=download, args=(id, user,)).start()
 
 
 def start():
@@ -148,7 +157,7 @@ def start():
             
             for z in range(links):
                 id = link_list[z]
-                Thread(target=download, args=(id,)).start()
+                Thread(target=download, args=(id, user,)).start()
             
             input()
 
@@ -164,6 +173,6 @@ def start():
 if __name__ == "__main__":
     os.system('title Tekky © 2022 ^| TikDown' if os.name == 'nt' else '')
 
-    if not os.path.exists(r'./tiktok_vids'):
-        os.makedirs(r'./tiktok_vids')
+    if not os.path.exists(r'{}'.format(base_path)):
+        os.makedirs(r'{}'.format(base_path))
     start()
