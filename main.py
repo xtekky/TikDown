@@ -4,9 +4,9 @@
 # I am not responsible for any damage caused by your use of this software.
 #-------------------------------------------------------------------------------------------------
 
-#from msilib.schema import Error
 
 try:
+    from msilib.schema import Error
     import os
     import requests
     import random
