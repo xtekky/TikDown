@@ -7,6 +7,15 @@
   <b>Star ⭐ if you want more</b><br>
 </p>
 
+## Discord Server
+```js
+ * discord.gg/onlp
+```
+## Skids
+```js
+ soon
+```
+
 ## New
 ```js
  * Video limit per profile now 93!!
