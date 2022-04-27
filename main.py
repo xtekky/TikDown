@@ -147,8 +147,7 @@ def start():
                         link_list.append(link_id)
                 except:       
                     Write.Print('       [*] Link not supported!!', Colors.red_to_white, interval=0.01)
-                    input()
-                    start()
+                    break
             
             
                 
