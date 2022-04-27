@@ -19,7 +19,7 @@
 ## New
 ```js
  * Separate Directories for each user - By github.com/greatestever
- * Video limit per profile now 93!!
+ * Video limit per profile now 93 !!
  * 10x faster !!
 ```
 ## To come
