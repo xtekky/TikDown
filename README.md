@@ -9,7 +9,7 @@
 
 ## Discord Server
 ```js
- * discord.gg/onlp
+ * discord.gg/onlp | Waxor#9999
 ```
 ## Skids
 ```js
