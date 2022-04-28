@@ -12,6 +12,12 @@
  * discord.gg/onlp | Waxor#9999
 ```
 
+## Why not open source anymore ?
+```js
+ * BECAUSE PEOPLE SKID, STEAL AND MAKE MONEY OUT OF IT WHILE I AM WORKING HARD
+```
+
+
 ## To come
 ```js
   * Tkinter GUI
