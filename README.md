@@ -60,7 +60,8 @@
 ```
 ##  Pull Requests:
 ```js
-  * If you wish to add some of your spice to the code, make a pull request | Requirements: Clear details about what got added / changed
+  * If you wish to add some of your spice to the code, make a pull request 
+  * Requirements: Clear details about what got added / changed
 ```
 
 ##  Additional Credits:
