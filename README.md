@@ -11,9 +11,19 @@
 ```js
  * discord.gg/onlp | Waxor#9999
 ```
+
+## To come
+```js
+  * Tkinter GUI
+  * Download by #
+  * More videos by profile
+  * Download music
+  * Adding support for other paltforms (YouTube / Spotify...)
+```
+
 ## Skids
 ```js
- soon
+ frunkas#6294 | 852790919199850556 | Selling script (what a bitch)
 ```
 
 ## New
@@ -22,11 +32,7 @@
  * Video limit per profile now 93 !!
  * 10x faster !!
 ```
-## To come
-```js
-  * Download by #
-  * More videos by profile
-```
+
 ## Features
 ```js
   * Download TikTok videos
@@ -51,6 +57,10 @@
   * If username > input @ and wait till downloads are finished
   * If amount > choose amount > paste video url(s) > wait till downloads are finished
   * Downloads will be in the "tiktok_vids" folder
+```
+##  Pull Requests:
+```js
+  * If you wish to add some of your spice to the code, make a pull request | Requirements: Clear details about what got added / changed
 ```
 
 ##  Additional Credits:
