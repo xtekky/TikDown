@@ -24,10 +24,10 @@ def download(id, user):
     }
 
     try:
-        if not os.path.exists(r'{}/{}'.format(base_path, user)):
-            os.makedirs(r'{}/{}'.format(base_path, user))
+        if not os.path.exists(f'{base_path}/{user}'):
+            os.makedirs(f'{base_path}/{user}')
     except Exception as e:
-        print('Creating path... {}'.format(str(e)))
+        print(Colorate.Horizontal(Colors.green_to_white,f"       [*] Crearing path: [{str(e)}]\n", 1))
 
     try:
         r = requests.get(f'https://api.tiktokv.com/aweme/v1/multi/aweme/detail/?aweme_ids=%5B{id}%5D', headers=headers).json()["aweme_details"][0]["video"]["play_addr"]["url_list"][0]
