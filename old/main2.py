@@ -16,7 +16,7 @@ try:
 except ModuleNotFoundError as e:
     print(f'ERROR [{e}]')
 
-base_path = 'C:/Users/Desktop/tiktok_vids'
+base_path = 'C:/Users/Desktop/TikSploit/tiktok_vids'
 
 def download(id, user):
     headers = {
