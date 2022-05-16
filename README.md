@@ -7,9 +7,9 @@
   <b>Star ⭐ if you want more</b><br>
 </p>
 
-## Discord Server
+## DOWNLOAD ALL VIDEOS OF A USER NO WATERMARK EXREMLY FAST CONTACT ME BELOW
 ```js
- * discord.gg/onlp | Waxor#9999
+ * discord.gg/onlp | Tekky#9999
 ```
 
 ## Why not open source anymore ?
