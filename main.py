@@ -1,149 +1,123 @@
-from bs4 import BeautifulSoup
-from urllib.request import Request, urlopen
-import http.client
-import json
-import random
-from urllib import request
-from pystyle import *
-import requests
-import os
-from time import time
+#--------------------------------#
+# Copyright (c) 2022 Tekky#9999  #
+#--------------------------------#
 
-def title(Content):
-    global DebugMode
-    if os.name in ('posix', 'ce', 'dos'):
-        pass
-    elif os.name == 'nt':
-        os.system(f"title {Content}")
-        return False
-    else:
-        pass
+try:
+    import random, os, threading, time, requests, sys
+    from pystyle import *
+except Exception as e:
+    print(f'ERROR [{e}]')
 
 
-def getVideoUrl(vid):
-    Write.Print("[*] Retrieving Url...\n", Colors.blue_to_purple, interval=0.001)
-    conn = http.client.HTTPSConnection("api.tiktokv.com") #
-    payload = ''
-    headers = {
-    }
-    conn.request("GET", "/aweme/v1/multi/aweme/detail/?aweme_ids=%5B" + vid + "%5D", payload, headers) #
-    res = conn.getresponse()
-    data = res.read()
-    obj = json.loads(data.decode("utf-8"))
-    Write.Print("[*] Removing Watermark...\n", Colors.blue_to_purple, interval=0.001)
-    return obj["aweme_details"][0]["video"]["play_addr"]["url_list"][0];
-
-
-if __name__ == "__main__":
-    title(f"Tekky © 2022 - Tik Down")
+class Main():
     try:
-        os.system('clear')
-        os.system('cls')
-    except:
-        pass
-    r = requests.Session()
-    newpath = r'./tiktok_vids'
-    if not os.path.exists(newpath):
-        os.makedirs(newpath)
-    raw_link = ''
-    link_id = ''
-    links_list = []
-    print(' ')
-    txt = r'''
-                        ████████────▀██  ▄▄▄█████▓ ██▓ ██ ▄█▀   ▓█████▄  ▒█████   █     █░███▄    █ TM
-                        ████████──█▄──█  ▓  ██▒ ▓▒▓██▒ ██▄█▒    ▒██▀ ██▌▒██▒  ██▒▓█░ █ ░█░██ ▀█   █  
-                        ███▀▀▀██──█████  ▒ ▓██░ ▒░▒██▒▓███▄░    ░██   █▌▒██░  ██▒▒█░ █ ░█▓██  ▀█ ██▒
-                        █▀──▄▄██──█████  ░ ▓██▓ ░ ░██░▓██ █▄    ░▓█▄   ▌▒██   ██░░█░ █ ░█▓██▒  ▐▌██▒
-                        █──█████──█████    ▒██▒ ░ ░██░▒██▒ █▄   ░▒████▓ ░ ████▓▒░░░██▒██▓▒██░   ▓██░
-                        █▄──▀▀▀──▄█████    ▒ ░░   ░▓  ▒ ▒▒ ▓▒    ▒▒▓  ▒ ░ ▒░▒░▒░ ░ ▓░▒ ▒ ░ ▒░   ▒ ▒ 
-                        ╔══╦╦╦╗╔══╦═╦╦╗      ░     ▒ ░░ ░▒ ▒░    ░ ▒  ▒   ░ ▒ ▒░   ▒ ░ ░ ░ ░░   ░ ▒░
-                        ╚╗╔╣║═╣╚╗╔╣║║═╣     ░       ▒ ░░ ░░ ░     ░ ░  ░ ░ ░ ░ ▒    ░   ░    ░   ░ ░ 
-                         ╚╝╚╩╩╝ ╚╝╚═╩╩╝       ░  ░  ░  v.3    ░.gg/onlp░ ░        T E K K Y  ░   
-                        ─═════════════════════════════════════☆☆═════════════════════════════════════─
-                               Copyright: ONLP™ x Tekky © 2022 | Discord: .gg/onlp / Tekky#9999                       
-                        ─═════════════════════════════════════☆☆═════════════════════════════════════─'''
-    print(Colorate.Horizontal(Colors.blue_to_purple, txt, 1))
-    print('\n')
-
-    #how many links
-    Write.Print("Do you want to download videos from a profile [y/n] ↓\n", Colors.blue_to_purple, interval=0.001)
-    choice = Write.Input(" >  ", Colors.blue_to_purple, interval=0.5, hide_cursor=True)
-    print('\n')
-
-    if choice == 'y':
-        # how many links
-        Write.Print("[?] Username [@xxxx] ↓\n", Colors.blue_to_purple, interval=0.001)
-        user = Write.Input(" >  ", Colors.blue_to_purple, interval=0.5, hide_cursor=True)
-
-        print('\n')
-
-        headers = {
-            'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36',
-        }
-        if "@" in user:
-            req = Request(f"https://www.tiktok.com/{user}", headers=headers)
-        else:
-            req = Request(f"https://www.tiktok.com/@{user}", headers=headers)
-        html_page = urlopen(req)
-        soup = BeautifulSoup(html_page, "lxml")
-        links = []
-        for link in soup.findAll('a'):
-            links.append(link.get('href'))
-        x = 0
-
-        for l in links:
-            if len(l) >= 54:
-                if "business" in l:
-                    pass
-                elif "legal" in l:
-                    pass
-                else:
-                    l = l.split("/")[5].split("?", 1)[0]
-                    links_list.append(l)
+        def download(url):
+            """
+            Downloading video
+            :param url:
+            :return:
+            """
+            global x, videocount
+            try:
+                with open(f'./backup/tiktok{random.randint(1000, 9999)}.mp4', 'wb') as out_file:
+                    videobytes = requests.get(f'{url}.mp4', stream=True)
+                    out_file.write(videobytes.content)
                     x += 1
-        Write.Print(f"[*] Videos found: {x}\n", Colors.blue_to_purple, interval=0.001)
-
-        start_time = time()
-
-        for z in range(x):
-            Write.Print(f'[*] Downloading [{z}/{x}]: [ id = {links_list[z]} ]\n', Colors.blue_to_purple, interval=0.001)
-            videoUrl = getVideoUrl(links_list[z])
-            response = request.urlretrieve(videoUrl, f"./tiktok_vids/tiktok_{user}_{random.randint(1000, 9999)}.mp4")
-        Write.Print(f'[*] Status > Success [{x}/{x}] (Check "tiktok_vids" folder) | TTC > {round(time() - start_time, 1)}s\n', Colors.green_to_white, interval=0.001)
-        quit()
-    else:
-        pass
-
-    #how many links
-    Write.Print("[?] How many links [1 to ∞] ↓\n", Colors.blue_to_purple, interval=0.001)
-    links = Write.Input(" >  ", Colors.blue_to_purple, interval=0.5, hide_cursor=True)
-    links = int(links)
-    print('\n')
-
-    for i in range(links):
-        #url input
-        Write.Print(f"[?] TikTok URL [{i}] ↓\n", Colors.blue_to_purple, interval=0.001)
-        link_id = Write.Input(" >  ", Colors.blue_to_purple, interval=0.5, hide_cursor=True)
-        raw_link = link_id
-
-        try:
-            if "vm.tiktok.com" in link_id or "vt.tiktok.com" in link_id:
-                link_id = r.head(link_id, stream=True, allow_redirects=True, timeout=5).url.split("/")[5].split("?", 1)[0]
-                links_list.append(link_id)
-            else:
-                link_id = link_id.split("/")[5].split("?", 1)[0]
-                links_list.append(link_id)
-        except:
-            Write.Print('[*] Link not supported!!', Colors.red_to_white, interval=0.01)
-
-            quit()
+                    os.system(f"title BACKUP TOOL ^| Tekky#9999 ^| Downloaded: {x} ^| Folder: ./backup")
+            except:
+                pass
 
 
-    #Write.Print(f'[*] Downloading: [{raw_link}]\n', Colors.blue_to_purple, interval=0.001
-    start_time = time()
+        def start():
+            global x
+            """
+            main function
+            """
 
-    for z in range(links):
-        Write.Print(f'[*] Downloading [{z}/{links}]: [ id = {links_list[z]} ]\n', Colors.blue_to_purple, interval=0.001)
-        videoUrl = getVideoUrl(links_list[z])
-        response = request.urlretrieve(videoUrl, f"./tiktok_vids/tiktok{random.randint(1000, 9999)}.mp4")
-    Write.Print(f'[*] Status > Success [{links}/{links}] (Check "tiktok_vids" folder) | TTC > {round(time() - start_time, 1)}s\n',Colors.green_to_white, interval=0.001)
+            os.system('cls' if os.name == 'nt' else "clear")
+            os.system(f"title BACKUP TOOL ^| Tekky#9999 ^| STATUS: LOADING")
+
+            banner = """
+                                .:                           :.                         
+                              !?.            :   ~            ^J^                       
+                            ?B!             G5   &&7            YG^                     
+                          ?&G.      :^    .#@5   &@@&?  .^.      ^&#~                   
+                        J@@!      ~5~    :&@@5   &@@@Y    ?Y.      5@#~                 
+                        5@@7    !#G..Y~ ~@@@@5   &@@?      ~#G:    P@@!                 
+                         ^&@B:7&@!.Y@@@B@@@@@5   &@@!        P@B^~&@G.                  
+                           5@@@B^J@@@@@@@&&@@5   &@@!         ~&@@@!                    
+                           5@@@5^@@@5.G@&:G@@5   &@@!       ...&@@@!                    
+                         ~&@B:5@P:#@&  !. G@@5   &@@!      ??^&@!~&@B.                  
+                        P@@7   ^&P.G@?    G@@5   &@@!    J&?:&B.   P@@7                 
+                        J&@!     PP J&    G@@5   &@@!  ?@@^.B7     5@#~                 
+                          ?&G.    ~? !!   B@@5   &@@?7&@&..Y.    ~&#^                   
+                            7B!    .^     J@@5   &@@@@@G  ^    .YG^                     
+                              !?.          &@5   &@@@@J       :?^                       
+                                :.         ~@5   &@@@~       ..                         
+                                            BP   &@&:                                   
+                                            ^Y   &B.                                    
+                                             :   7                                      
+            """
+
+            Anime.Fade(Center.Center(banner), Colors.blue_to_red, Colorate.Vertical, interval=0.01, time=3)
+            Anime.Fade(Center.Center("TIKTOK BACKUP TOOL"), Colors.blue_to_red, Colorate.Vertical, interval=0.01, time=2)
+            Anime.Fade(Center.Center("BY Tekky#9999"), Colors.blue_to_red, Colorate.Vertical, interval=0.01, time=3)
+            Anime.Fade(Center.Center("THE INPUT IS A RANDOM ID FROM A VIDEO OF THE TARGET ACCOUNT"), Colors.blue_to_red, Colorate.Vertical, interval=0.01, time=5)
+
+            user = Write.Input(Center.Center("id > "), Colors.blue_to_red, interval=0)
+
+            os.system('cls' if os.name == 'nt' else "clear")
+            print(Colorate.Vertical(Colors.blue_to_red, Center.Center("DOWNLOADING...")))
+
+            if not os.path.exists(f'backup'):
+                os.makedirs(f'backup')
+
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36",
+            }
+
+            secUid = requests.get(f"https://api.tiktokv.com/aweme/v1/multi/aweme/detail/?aweme_ids=%5B{user}%5D", headers=headers).json()["aweme_details"][0]["author"]["sec_uid"]
+
+            max_cursor = "0"
+            x = 0
+
+            while True:
+                try:
+                    """
+                    While True to get all user videos
+                    """
+
+                    url = f"https://api16-core-c-useast1a.tiktokv.com/aweme/v1/aweme/post/?sec_user_id={secUid}&count=33&device_id=9999999999999999999&max_cursor={max_cursor}&aid=1180"
+                    headers = {
+                        "accept-encoding": "gzip",
+                        "user-agent": "com.ss.android.ugc.trill/240303 (Linux; U; Android 12; en_US; Pixel 6 Pro; Build/SP2A.220405.004;tt-ok/3.10.0.2)",
+                        "x-gorgon": "0"
+                    }
+                    response = requests.request("GET", url, headers=headers)
+                    try:
+                        if response.json()["status_msg"] == "No more videos":
+                            break
+                    except:
+                        try:
+                            max_cursor = response.json()["max_cursor"]
+                        except:
+                            break
+
+                    videos = response.json()["aweme_list"]
+
+                    for vid in videos:
+                        url = vid["video"]["play_addr"]["url_list"][0]
+                        threading.Thread(target=Main.download, args=(url,)).start()
+                except:
+                    print(Colorate.Vertical(Colors.blue_to_red, Center.Center("FINISHED...")))
+                    break
+
+    except Exception as e:
+        os.system('cls' if os.name == 'nt' else "clear")
+        print(f'ERROR {e}')
+        input()
+        sys.exit()
+
+
+if __name__ == '__main__':
+    Main.start()
