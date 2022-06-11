@@ -1,28 +1,17 @@
 # 
 
 
-<h1 align="center">💎TD [ TikDown v4 ]</h1>
+<h1 align="center">💎TD [ TikDown v5 ]</h1>
 
 <p align='center'>
   <b>Star ⭐ if you want more</b><br>
 </p>
-
-## DOWNLOAD ALL VIDEOS OF A USER NO WATERMARK EXREMLY FAST CONTACT ME BELOW
-```js
- * discord.gg/onlp | Tekky#9999
-```
-
-## Why not open source anymore ?
-```js
- * BECAUSE PEOPLE SKID, STEAL AND MAKE MONEY OUT OF IT WHILE I AM WORKING HARD
-```
 
 
 ## To come
 ```js
   * Tkinter GUI
   * Download by #
-  * More videos by profile
   * Download music
   * Adding support for other paltforms (YouTube / Spotify...)
 ```
@@ -35,7 +24,7 @@
 ## New
 ```js
  * Separate Directories for each user - By github.com/greatestever
- * Video limit per profile now 93 !!
+ * All videos
  * 10x faster !!
 ```
 
