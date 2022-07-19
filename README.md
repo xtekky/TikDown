@@ -1,7 +1,5 @@
-# 
-
-
-<h1 align="center">💎TD [ TikDown v5 ]</h1>
+free version: pathched
+contact me to buy paid version
 
 <p align='center'>
   <b>Star ⭐ if you want more</b><br>
